@@ -1,0 +1,23 @@
+.stories {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+}
+
+.stories img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    border: 3px solid transparent;
+    box-shadow: 0px 0px 0px 3px #ffffff, 3px -4px 10px 2px purple, -3px 6px 10px 1px orange;
+}
+
+
+/* adjust margin as needed */
+
+.stories img+img {
+    margin-left: 10px;
+}

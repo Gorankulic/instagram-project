@@ -31,7 +31,7 @@ function renderStories() {
 }
 
 /**
- * Liste von Beiträgen mit Bildern, Namen und Kommentaren.
+ * Liste von Beiträgen mit Bildern, Namen, Likes und Kommentaren.
  * @type {Array}
  */
 let posts = generateRandomPosts();
@@ -73,17 +73,70 @@ function createPostElement(post, index) {
     likeCount.textContent = `Likes: ${post.likes}`;
     likeCount.classList.add('like-count');
 
-    const commentSection = createCommentSection(post.comments, index);
+    const iconsContainer = document.createElement('div');
+    iconsContainer.classList.add('post-icons');
 
-    const likeButton = createLikeButton(post, index);
+    const heartIcon = createHeartIcon(post, index);
+    const commentIcon = createCommentIcon();
+    const arrowIcon = createArrowIcon();
+
+    iconsContainer.appendChild(heartIcon);
+    iconsContainer.appendChild(commentIcon);
+    iconsContainer.appendChild(arrowIcon);
+
+    const commentSection = createCommentSection(post.comments, index);
 
     element.appendChild(image);
     element.appendChild(name);
     element.appendChild(likeCount);
+    element.appendChild(iconsContainer);
     element.appendChild(commentSection);
-    element.appendChild(likeButton);
 
     return element;
+}
+
+/**
+ * Erstellt das Herz-Icon für einen Beitrag.
+ * @param {Object} post - Der Beitrag.
+ * @param {number} index - Der Index des Beitrags.
+ * @returns {HTMLElement} - Das erstellte Element.
+ */
+function createHeartIcon(post, index) {
+    const heartIcon = document.createElement('i');
+    heartIcon.classList.add('fas', 'fa-heart');
+    heartIcon.classList.add(post.liked ? 'liked' : 'not-liked');
+    heartIcon.addEventListener('click', () => {
+        if (heartIcon.classList.contains('liked')) {
+            post.likes--;
+            post.liked = false;
+        } else {
+            post.likes++;
+            post.liked = true;
+        }
+        renderPosts();
+        savePostsToLocalStorage();
+    });
+    return heartIcon;
+}
+
+/**
+ * Erstellt das Kommentar-Icon.
+ * @returns {HTMLElement} - Das erstellte Element.
+ */
+function createCommentIcon() {
+    const commentIcon = document.createElement('i');
+    commentIcon.classList.add('fas', 'fa-comment');
+    return commentIcon;
+}
+
+/**
+ * Erstellt das Pfeil-Icon.
+ * @returns {HTMLElement} - Das erstellte Element.
+ */
+function createArrowIcon() {
+    const arrowIcon = document.createElement('i');
+    arrowIcon.classList.add('fas', 'fa-arrow-right');
+    return arrowIcon;
 }
 
 /**
@@ -203,41 +256,26 @@ function deleteComment(commentIndex, postIndex, commentItem) {
 }
 
 /**
- * Erstellt den "Like"-Button für einen Beitrag.
- * @param {Object} post - Der Beitrag.
- * @param {number} postIndex - Der Index des Beitrags.
- * @returns {HTMLElement} - Das erstellte Element.
+ * Generiert eine Liste von zufälligen Beiträgen.
+ * @returns {Array} - Die generierten Beiträge.
  */
-function createLikeButton(post, postIndex) {
-    const likeButton = document.createElement('button');
-    likeButton.innerHTML = `<i class="fas fa-heart"></i> Like (${post.likes})`;
-    likeButton.addEventListener('click', () => {
-        if (likeButton.classList.contains('liked')) {
-            post.likes--;
-            likeButton.classList.remove('liked');
-        } else {
-            post.likes++;
-            likeButton.classList.add('liked');
-        }
-        renderPosts();
-        savePostsToLocalStorage();
+function generateRandomPosts() {
+    const posts = [];
+
+    const images = generateRandomImages();
+
+    images.forEach((image) => {
+        const post = {
+            src: image.src,
+            name: image.name,
+            likes: Math.floor(Math.random() * 100),
+            liked: false,
+            comments: generateRandomComments(),
+        };
+        posts.push(post);
     });
 
-    // Überprüfen, ob der Beitrag bereits geliked wurde
-    if (post.likes > 0) {
-        likeButton.classList.add('liked');
-    }
-
-    return likeButton;
-}
-
-/**
- * Generiert einen zufälligen Namen.
- * @returns {string} - Der generierte Name.
- */
-function generateRandomName() {
-    const names = ['Max', 'Lena', 'Tim', 'Anna', 'Felix', 'Sarah', 'Paul', 'Laura', 'David', 'Julia'];
-    return names[Math.floor(Math.random() * names.length)];
+    return posts;
 }
 
 /**
@@ -256,25 +294,29 @@ function generateRandomImages() {
 }
 
 /**
- * Generiert eine Liste von zufälligen Beiträgen.
- * @returns {Array} - Die generierten Beiträge.
+ * Generiert eine Liste von zufälligen Kommentaren.
+ * @returns {Array} - Die generierten Kommentare.
  */
-function generateRandomPosts() {
-    const posts = [];
+function generateRandomComments() {
+    const comments = [];
 
-    const images = generateRandomImages();
+    const numComments = Math.floor(Math.random() * 5) + 1;
 
-    images.forEach((image) => {
-        const post = {
-            src: image.src,
-            name: image.name,
-            likes: 0,
-            comments: [],
-        };
-        posts.push(post);
-    });
+    for (let i = 0; i < numComments; i++) {
+        const comment = `Kommentar ${i + 1}`;
+        comments.push(comment);
+    }
 
-    return posts;
+    return comments;
+}
+
+/**
+ * Generiert einen zufälligen Namen.
+ * @returns {string} - Der generierte Name.
+ */
+function generateRandomName() {
+    const names = ['Max', 'Lena', 'Tim', 'Anna', 'Felix', 'Sarah', 'Paul', 'Laura', 'David', 'Julia'];
+    return names[Math.floor(Math.random() * names.length)];
 }
 
 /**

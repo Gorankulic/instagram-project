@@ -21,3 +21,15 @@ body {
     box-shadow: 0px 0px 0px 3px #ffffff, 3px -4px 10px 2px purple, -3px 6px 10px 1px orange;
     margin-left: 30px;
 }
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons i {
+    font-size: 24px;
+    color: #333;
+    margin: 0 10px;
+}

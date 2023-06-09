@@ -1,8 +1,10 @@
 body {
+    margin: 0;
     display: flex;
     align-items: center;
-    flex-direction: column-reverse;
     overflow-x: hidden;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .stories {
@@ -23,14 +25,48 @@ body {
     margin-left: 30px;
 }
 
-.icons {
+.icons-container {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: space-around;
+    width: 300px;
 }
 
-.icons i {
-    font-size: 24px;
-    color: #333;
-    margin: 0 10px;
+.icons-container img {
+    width: 20px;
+}
+
+.buttons-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.favorite-container img {
+    width: 20px;
+}
+
+.picture-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.picture-container img {
+    display: flex;
+    align-items: center;
+    width: 700px;
+    border-radius: 5px;
+    margin-top: 20px;
+    transition: transform 0.2s;
+    transform-origin: center center;
+}
+
+.picture-container img:hover {
+    transform: scale(1.6);
+}
+
+.arrow-button {
+    transform: rotate(225deg);
 }

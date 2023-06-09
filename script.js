@@ -337,6 +337,7 @@ function loadPostsFromLocalStorage() {
     }
 }
 
+
 renderStories();
 renderPosts();
 loadPostsFromLocalStorage();

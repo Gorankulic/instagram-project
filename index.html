@@ -7,14 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
 
-
-    <head>
-
-    </head>
-    <title>Instagram Clone</title>
+</head>
+<title>Instagram Clone</title>
 </head>
 
 <body>
+    <!-- stories -->
     <div class="stories" id="stories">
         <div class="stories-and-profile-pictures">
             <div class="profile-story" id="story-from-profile">
@@ -23,38 +21,35 @@
 
             </div>
 
-            <div class="profile-story" id="story-from-profile">
-                <img src="img/people profile pictures/pic (2).jpg" alt="">
-                <p>user1111</p>
-
-            </div>
-
 
 
         </div>
     </div>
-
-    <div class="photo-and-posts-div">
+    <!---------------------------------------------------------------- posts -->
+    <div class="photo-and-posts-div" id="all-user-posts-and-pictures">
 
         <div class="user-picture-and-name">
-            <p id="name-of-the-user"><b>User1234</b></p>
-            <!-- array from json array "name" ( "name": "Person 1",) -->
-            <img id="post-of-the-user" class="user-photo-on-status" src="img/people profile pictures/pic (1).jpg" alt="">
-            <!-- array from json array "name" ( "name": "Person 1",) -->
+            <p id="name-of-the-user"><b></b></p>
+            <!-- array from json array "name" ( "name": "Person 1",) render in element with id: id="name-of-the-user"-->
+            <img id="icon-of-the-user" class="user-photo-on-status" src="img/people profile pictures/pic (1).jpg" alt="">
+            <!-- array from json array "picture-location" ( "profile-picture": "img/people profile pictures/pic (1).jpg"  render in element with id:id="icon-of-the-user" -->
         </div>
 
 
         <div id="post-container-with-additional-buttons-and-comments" class="picture-container">
             <img src="img/posts/post (1).jpg" alt="">
+            <!-- array from json array "picture-location" ( "picture-location": "Person 1",) render in element with id: id="name-of-the-user"-->
 
         </div>
 
 
-        <div class="buttons-container">
+        <div class="buttons-container" id="icons-container-parents">
 
-            <div class="icons-container">
+            <div class="icons-container" id="icons-container-kids">
                 <img src="img/icons/herz.png" id="like-button" alt="like button">
+                <!-- array from json array   "likes": ("likes": 8,) render in element with id: id="like-button"-->
                 <img src="img/icons/comment icon.png" id="comment-section" alt="comment">
+                <!-- array from json array   "comments": ("comments": ["This is stunning!", "Absolutely love it!", "You're a talent!"],) render in element with id: id="comment-section"-->
                 <img src="img/icons/arrow.png" id="send-to-friends-arrow" class="arrow-button" alt="arrow">
             </div>
             <div class="favorite-container">
@@ -63,10 +58,13 @@
 
         </div>
         <div class="likes">
-            <p>Liked by <b>Gk</b> and <b>others</b></p>
+            <p>Liked by <b>Username</b> and <b id="names-of-the-other-users-who-liked-the-post">others</b></p>
+            <!-- array from json array   "likes": ("likes": 8,) render in element with id: id="names-of-the-other-users-who-liked-the-post"-->
         </div>
         <div class="status">
-            <p><b>Username</b> this is my status</p>
+            <p><b>Username</b></p>
+            <p id="user-status">this is my status</p>
+            <!-- array from json array   "status": ( "status": "Exploring new horizons!") render in element with id: id="user-status"-->
 
         </div>
         <div>

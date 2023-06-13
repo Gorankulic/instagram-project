@@ -61,10 +61,9 @@ body {
     margin-top: 20px;
     transition: transform 0.2s;
     transform-origin: center center;
-}
-
-.picture-container img:hover {
-    transform: scale(1.2);
+    height: 400px;
+    object-fit: cover;
+    object-position: center;
 }
 
 .user-photo-on-status {
@@ -79,6 +78,7 @@ body {
     align-items: center;
     flex-direction: row-reverse;
     justify-content: flex-end;
+    margin-top: 36px;
 }
 
 .user-picture-and-name img {

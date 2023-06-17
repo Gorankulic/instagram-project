@@ -9,6 +9,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
             postImage: "img/posts/post (1).jpg",
             profilePicture: "img/people profile pictures/pic (1).jpg",
             userStatus: "Enjoying life to the fullest!",
+            namesOfUsersWhoLikedThePost: ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"] //Names of users who liked the post
+
         },
         {
             id: 2,
@@ -18,6 +20,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
             postImage: "img/posts/post (2).jpg",
             profilePicture: "img/people profile pictures/pic (2).jpg",
             userStatus: "Chasing dreams and making memories!",
+            namesOfUsersWhoLikedThePost: ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"]
+
+
         },
         {
             id: 3,
@@ -83,8 +88,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             // Status
             let statusDiv = `<div class="status">
-                                <p><b>Username</b></p>
-                                <p id="user-status-${user.id}">${user.userStatus}</p>
+                                <p><b>${user.userName}</b></p><p id="user-status-${user.id}">${user.userStatus}</p>
                             </div>`;
 
             // View all comments

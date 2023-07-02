@@ -107,6 +107,7 @@ Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>${user
             container.appendChild(userContainerDiv);
         }
     }
+    
 
     /**
      * Displays user stories.
@@ -126,6 +127,7 @@ Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>${user
             `;
         }
     }
+    
 
     // Call the function to populate the page with user data
     populatePageWithData();

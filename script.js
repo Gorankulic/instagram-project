@@ -1,3 +1,6 @@
+let usersData = [
+    // User data objects
+];
 window.onload = function() {
         // JSON array containing user data
         let usersData = [{
@@ -42,6 +45,8 @@ window.onload = function() {
             }
         ];
 
+
+
         /**
          * Populates the page with user data.
          */
@@ -64,7 +69,7 @@ window.onload = function() {
 
                 // Post-container-with-additional-buttons-and-comments
                 let postContainerDiv = `<div id="post-container-with-additional-buttons-and-comments-${user.id}" class="picture-container">
-                                        <img src="${user.postImage}" alt="User Post">
+                                        <img onclick="show(user)" src="${user.postImage}" alt="User Post">
                                     </div>`;
 
                 // Buttons-container
@@ -127,6 +132,8 @@ Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>${user
             `;
         }
     }
+
+    
     
 
     // Call the function to populate the page with user data
@@ -135,3 +142,16 @@ Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>${user
     // Call the function to display user stories
     showUserStories();
 };
+function show() {
+    
+   
+    document.getElementById('postsInFullScreen').classList.remove('d-none');
+    document.getElementById('stories').classList.add('d-none');
+    document.getElementById('all-user-posts-and-pictures').classList.add('d-none');
+
+    document.getElementById('userImageBigMode').innerHTML =+ `<img  src="${user.postImage}" alt="User post image">`;
+
+    
+
+    
+  }

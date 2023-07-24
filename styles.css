@@ -107,6 +107,24 @@ body {
     display: none;
 }
 
+.user-comments {
+    margin-left: 20px;
+}
+
+.reply-to-user-text {
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+
+.reply-text {
+    margin-left: 5px;
+}
+
+.comment-text {
+    margin-left: 5px;
+    margin-bottom: 5px;
+}
+
 @media (max-width: 768px) {
     /* Mobile-specific CSS */
     .stories {

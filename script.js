@@ -1,47 +1,44 @@
 let usersData = [
     // User data objects
 ];
+
 window.onload = function() {
         // JSON array containing user data
-        let usersData = [{
-                id: 1,
-                userName: "Goran",
-                comments: ["Great photo!", "Love it!", "So beautiful!"],
-                likes: 10,
-                postImage: "img/posts/post (1).jpg",
-                profilePicture: "img/people profile pictures/pic (1).jpg",
-                userStatus: "Enjoying life to the fullest!",
-                namesOfUsersWhoLikedThePost: ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"]
+        usersData = [{
+                "userName": "Goran",
+                "comments": ["Great photo!", "Love it!", "So beautiful!"],
+                "likes": 10,
+                "postImage": "img/posts/post (1).jpg",
+                "profilePicture": "img/people profile pictures/pic (1).jpg",
+                "userStatus": "Enjoying life to the fullest!",
+                "namesOfUsersWhoLikedThePost": ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"]
             },
             {
-                id: 2,
-                userName: "Rob",
-                comments: ["Amazing!", "Awesome shot!", "You're killing it!"],
-                likes: 5,
-                postImage: "img/posts/post (2).jpg",
-                profilePicture: "img/people profile pictures/pic (2).jpg",
-                userStatus: "Chasing dreams and making memories!",
-                namesOfUsersWhoLikedThePost: ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"]
+                "userName": "Rob",
+                "comments": ["Amazing!", "Awesome shot!", "You're killing it!"],
+                "likes": 5,
+                "postImage": "img/posts/post (2).jpg",
+                "profilePicture": "img/people profile pictures/pic (2).jpg",
+                "userStatus": "Chasing dreams and making memories!",
+                "namesOfUsersWhoLikedThePost": ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"]
             },
             {
-                id: 3,
-                userName: "Tom und Anna",
-                comments: ["Fantastic!", "Incredible work!", "You never disappoint!"],
-                likes: 8,
-                postImage: "img/posts/post (3).jpg",
-                profilePicture: "img/people profile pictures/pic (3).jpg",
-                userStatus: "Embracing the beauty of nature!",
-                namesOfUsersWhoLikedThePost: ["Sunshine", "Breeze", "NatureLover", "Adventurer", "Wanderlust"]
+                "userName": "Tom und Anna",
+                "comments": ["Fantastic!", "Incredible work!", "You never disappoint!"],
+                "likes": 8,
+                "postImage": "img/posts/post (3).jpg",
+                "profilePicture": "img/people profile pictures/pic (3).jpg",
+                "userStatus": "Embracing the beauty of nature!",
+                "namesOfUsersWhoLikedThePost": ["Sunshine", "Breeze", "NatureLover", "Adventurer", "Wanderlust"]
             },
             {
-                id: 4,
-                userName: "Birgit",
-                comments: ["This is stunning!", "Absolutely love it!", "You're a talent!"],
-                likes: 3,
-                postImage: "img/posts/post (4).jpg",
-                profilePicture: "img/people profile pictures/pic (4).jpg",
-                userStatus: "Exploring new horizons!",
-                namesOfUsersWhoLikedThePost: ["InspireMe", "Dreamer", "Explorer"]
+                "userName": "Birgit",
+                "comments": ["This is stunning!", "Absolutely love it!", "You're a talent!"],
+                "likes": 3,
+                "postImage": "img/posts/post (4).jpg",
+                "profilePicture": "img/people profile pictures/pic (4).jpg",
+                "userStatus": "Exploring new horizons!",
+                "namesOfUsersWhoLikedThePost": ["InspireMe", "Dreamer", "Explorer"]
             }
         ];
 
@@ -69,12 +66,12 @@ window.onload = function() {
 
                 // Post-container-with-additional-buttons-and-comments
                 let postContainerDiv = `<div id="post-container-with-additional-buttons-and-comments-${user.id}" class="picture-container">
-                                        <img onclick="show(user)" src="${user.postImage}" alt="User Post">
+                                        <img onclick="show()" src="${user.postImage}" alt="User Post">
                                     </div>`;
 
                 // Buttons-container
-                let buttonsContainerDiv = `<div class="buttons-container" id="icons-container-parents-${user.id}">
-                                            <div class="icons-container" id="icons-container-kids-${user.id}">
+                let buttonsContainerDiv = `<div class="buttons-container" >
+                                            <div class="icons-container" >
                                                 <img src="img/icons/herz.png" alt="Like Button">
                                                 <img src="img/icons/comment icon.png" alt="Comment Section">
                                                 <img src="img/icons/arrow.png" id="send-to-friends-arrow-${user.id}" class="arrow-button" alt="Arrow Button">
@@ -133,25 +130,76 @@ Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>${user
         }
     }
 
-    
-    
-
+   
     // Call the function to populate the page with user data
     populatePageWithData();
 
     // Call the function to display user stories
     showUserStories();
 };
-function show() {
-    
-   
-    document.getElementById('postsInFullScreen').classList.remove('d-none');
-    document.getElementById('stories').classList.add('d-none');
-    document.getElementById('all-user-posts-and-pictures').classList.add('d-none');
+ function closeDialog() {
+    let postsInFullScreen = document.getElementById("postsInFullScreen");
+    postsInFullScreen.classList.add("d-none");
+ }
 
-    document.getElementById('userImageBigMode').innerHTML =+ `<img  src="${user.postImage}" alt="User post image">`;
+ 
+ function show() {
+    // Display the full-screen post
+    let postsInFullScreen = document.getElementById("postsInFullScreen");
+    postsInFullScreen.classList.remove("d-none");
 
-    
+    // Get the clicked picture element
+    let clickedPicture = event.target;
 
-    
-  }
+    // Get the source of the clicked picture
+    let pictureSource = clickedPicture.src;
+
+    // Find the matching user data based on the picture source
+    let matchingUser = usersData.find((user) => user.postImage === pictureSource);
+
+    // Set the source of the userImageBigMode element
+    let userImageBigMode = document.getElementById("userImageBigMode");
+    userImageBigMode.src = pictureSource;
+
+    // Retrieve matching comments
+    let matchingComments = matchingUser.comments;
+
+    // Retrieve user name
+    let userName = matchingUser.userName;
+
+    // Retrieve user status
+    let userStatus = matchingUser.userStatus;
+
+    // Set the comments in the comment section
+    let commentSection = document.getElementById("commentSection");
+    commentSection.innerHTML = `
+        <span onclick="closeDialog()" id="closeButton" class="close-button"><b>X</b></span>
+
+        <div class="picture-and-text-post-of-the-user">
+            <img id="peopleSmallPicture" class="people-small-profile-images" src="${matchingUser.profilePicture}" alt="User profile picture">
+            <b id="userNameInPreviewMode">${userName}</b>
+            <span id="userPostInPreviewMode" class="user-post">${userStatus}</span>
+            <img id="heartImageInPreviewMode" class="heart-image-white" src="img/icons/herz.png" alt="">
+        </div>
+
+        <div class="reply-to-user-text">
+            <span class="reply-text">6h</span>
+            <span class="reply-text">${matchingUser.likes} likes</span>
+            <span class="reply-text">Reply</span>
+        </div>
+
+        <ul id="commentList">
+            ${matchingComments.map((comment) => `<li>${comment}</li>`).join("")}
+        </ul>
+    `;
+}
+
+
+  
+
+
+// Add event listener to each post image
+let postImages = document.querySelectorAll(".picture-container img");
+postImages.forEach(function(image) {
+    image.addEventListener("click", show);
+});

@@ -5,27 +5,6 @@
                         background-color: rgba(rgba(193, 193, 193, 0.413));
                     }
                     
-                    .comment-area {
-                        background-color: white;
-                        margin-left: 20px;
-                        height: 90%;
-                        width: 20%;
-                    }
-                    
-                    .replay-to-user-text {
-                        display: flex;
-                        padding-top: 10px;
-                        padding-left: 50px;
-                    }
-                    
-                    .people-small-profile-images {
-                        width: 40px;
-                        height: 40px;
-                        border-radius: 50px;
-                        margin-right: 10px;
-                        margin-left: 10px;
-                    }
-                    
                     img {
                         border-radius: 5px;
                         width: 65%;
@@ -54,17 +33,6 @@
                     .picture-and-text-post-of-the-user {
                         display: flex;
                         align-items: center;
-                    }
-                    
-                    .heart-image-white {
-                        width: 15px;
-                        height: 15px;
-                        margin-left: 200px;
-                        margin-top: 5px;
-                    }
-                    
-                    .user-post {
-                        margin-left: 5px;
                     }
                     
                     .close-button {

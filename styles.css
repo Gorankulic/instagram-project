@@ -108,7 +108,7 @@ body {
 }
 
 .user-comments {
-    margin-left: 20px;
+    margin-left: 10;
 }
 
 .reply-to-user-text {
@@ -121,8 +121,72 @@ body {
 }
 
 .comment-text {
+    display: flex;
+    align-items: center;
+    /* if you want the children to align vertically in the center */
     margin-left: 5px;
     margin-bottom: 5px;
+    margin-right: 10px;
+}
+
+.user-post {
+    margin-left: 5px;
+    text-wrap: nowrap;
+}
+
+.comment-area {
+    background-color: white;
+    margin-left: 20px;
+    min-width: fit-content;
+    height: 90%;
+    width: 20%;
+}
+
+.heart-image-white {
+    width: 15px;
+    height: 15px;
+    /* margin-left: 200px; */
+    /* margin-top: 5px; */
+    /* padding-left: 100px; */
+    display: flex;
+    margin-left: 50px;
+    margin-right: 20px;
+}
+
+.people-small-profile-images {
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-right: 10px;
+    margin-left: 10px;
+    padding: 5px;
+}
+
+.replay-to-user-text {
+    display: flex;
+    padding-top: 10px;
+    padding-left: 50px;
+}
+
+.post-image-comments {
+    display: flex;
+    margin-left: 20%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.user-picture-and-comment {
+    display: flex;
+    align-items: center;
 }
 
 @media (max-width: 768px) {

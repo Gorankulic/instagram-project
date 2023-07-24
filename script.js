@@ -1,48 +1,60 @@
 usersData = [{
         "userName": "Goran",
-        "comments": ["Great photo!", "Love it!", "So beautiful!"],
-        "namesOfUsersWhoCommented": ["Alex123", "Lily22", "MaxPower"],
+        "comments": [
+            { "text": "Great photo!", "commentedBy": "Alex123", "commenterImage": "img/people who commented/image (1).jpg" },
+            { "text": "Love it!", "commentedBy": "Lily22", "commenterImage": "img/people who commented/image (2).jpg" },
+            { "text": "So beautiful!", "commentedBy": "MaxPower", "commenterImage": "img/people who commented/image (3).jpg" }
+        ],
         "likes": 10,
         "postImage": "img/posts/post (1).jpg",
         "profilePicture": "img/people profile pictures/pic (1).jpg",
         "userStatus": "Enjoying life to the fullest!",
         "namesOfUsersWhoLikedThePost": ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"],
-        "postAgeInHours": Math.floor(Math.random() * 24) + 1
+        "hoursOld": 6
     },
     {
         "userName": "Rob",
-        "comments": ["Amazing!", "Awesome shot!", "You're killing it!"],
-        "namesOfUsersWhoCommented": ["Eclipse", "Stardust", "Nova"],
+        "comments": [
+            { "text": "Amazing!", "commentedBy": "Stardust", "commenterImage": "img/people who commented/image (4).jpg" },
+            { "text": "Awesome shot!", "commentedBy": "Nova", "commenterImage": "img/people who commented/image (5).jpg" },
+            { "text": "You're killing it!", "commentedBy": "Whisper", "commenterImage": "img/people who commented/image (6).jpg" }
+        ],
         "likes": 5,
         "postImage": "img/posts/post (2).jpg",
         "profilePicture": "img/people profile pictures/pic (2).jpg",
         "userStatus": "Chasing dreams and making memories!",
         "namesOfUsersWhoLikedThePost": ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"],
-        "postAgeInHours": Math.floor(Math.random() * 24) + 1
+        "hoursOld": 12
     },
     {
         "userName": "Tom und Anna",
-        "comments": ["Fantastic!", "Incredible work!", "You never disappoint!"],
-        "namesOfUsersWhoCommented": ["Sunshine", "Breeze", "NatureLover"],
+        "comments": [
+            { "text": "Fantastic!", "commentedBy": "Sunshine", "commenterImage": "img/people who commented/image (7).jpg" },
+            { "text": "Incredible work!", "commentedBy": "Breeze", "commenterImage": "img/people who commented/image (8).jpg" },
+            { "text": "You never disappoint!", "commentedBy": "NatureLover", "commenterImage": "img/people who commented/image (9).jpg" }
+        ],
         "likes": 8,
         "postImage": "img/posts/post (3).jpg",
         "profilePicture": "img/people profile pictures/pic (3).jpg",
         "userStatus": "Embracing the beauty of nature!",
         "namesOfUsersWhoLikedThePost": ["Sunshine", "Breeze", "NatureLover", "Adventurer", "Wanderlust"],
-        "postAgeInHours": Math.floor(Math.random() * 24) + 1
+        "hoursOld": 18
     },
     {
         "userName": "Birgit",
-        "comments": ["This is stunning!", "Absolutely love it!", "You're a talent!"],
-        "namesOfUsersWhoCommented": ["InspireMe", "Dreamer", "Explorer"],
+        "comments": [
+            { "text": "This is stunning!", "commentedBy": "InspireMe", "commenterImage": "img/people who commented/image (10).jpg" },
+            { "text": "Absolutely love it!", "commentedBy": "Dreamer", "commenterImage": "img/people who commented/image (11).jpg" },
+            { "text": "You're a talent!", "commentedBy": "Explorer", "commenterImage": "img/people who commented/image (12).jpg" }
+        ],
         "likes": 3,
         "postImage": "img/posts/post (4).jpg",
         "profilePicture": "img/people profile pictures/pic (4).jpg",
         "userStatus": "Exploring new horizons!",
         "namesOfUsersWhoLikedThePost": ["InspireMe", "Dreamer", "Explorer"],
-        "postAgeInHours": Math.floor(Math.random() * 24) + 1
+        "hoursOld": 24
     }
-];
+]
 
 
 
@@ -202,7 +214,7 @@ function show(i) {
   // Set the comments in the comment section
   let commentSection = document.getElementById("commentSection");
   commentSection.innerHTML = `
-      <span  id="closeButton" class="close-button"><b onclick="closeDialog()" class="close-x-button">X</b></span>
+      <span id="closeButton" class="close-button"><b onclick="closeDialog()" class="close-x-button">X</b></span>
 
       <div class="picture-and-text-post-of-the-user">
           <img id="peopleSmallPicture" class="people-small-profile-images" src="${matchingUser.profilePicture}" alt="User profile picture">
@@ -212,13 +224,23 @@ function show(i) {
       </div>
 
       <div class="reply-to-user-text">
-          <span class="reply-text">6h</span>
+          <span class="reply-text">${matchingUser.hoursOld}h</span>
           <span class="reply-text">${matchingUser.likes} likes</span>
           <span class="reply-text">Reply</span>
       </div>
 
       <div id="commentList" class="user-comments">
-          ${matchingComments.map((comment) => `<div class="comment-text">${comment}</div>`).join("")}
+          ${matchingComments.map((comment) => `
+          <div class="user-picture-and-comment">
+
+          <img class="people-small-profile-images" src="${comment.commenterImage}" alt="Commenter Picture">
+          <b>${comment.commentedBy}</b>:<span>${comment.text}</span>
+          <img id="heartImageInPreviewMode" class="heart-image-white" src="img/icons/herz.png" alt="">
+
+          </div>
+          
+             
+          `).join("")}
       </div>
   `;
 }

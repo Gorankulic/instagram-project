@@ -1,40 +1,49 @@
 usersData = [{
         "userName": "Goran",
         "comments": ["Great photo!", "Love it!", "So beautiful!"],
+        "namesOfUsersWhoCommented": ["Alex123", "Lily22", "MaxPower"],
         "likes": 10,
         "postImage": "img/posts/post (1).jpg",
         "profilePicture": "img/people profile pictures/pic (1).jpg",
         "userStatus": "Enjoying life to the fullest!",
-        "namesOfUsersWhoLikedThePost": ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"]
+        "namesOfUsersWhoLikedThePost": ["Alex123", "Lily22", "MaxPower", "JazzQueen", "StarGazer", "DreamCatcher", "SunnySmiles", "Moonlighter", "WildHeart", "RainbowSparkle"],
+        "postAgeInHours": Math.floor(Math.random() * 24) + 1
     },
     {
         "userName": "Rob",
         "comments": ["Amazing!", "Awesome shot!", "You're killing it!"],
+        "namesOfUsersWhoCommented": ["Eclipse", "Stardust", "Nova"],
         "likes": 5,
         "postImage": "img/posts/post (2).jpg",
         "profilePicture": "img/people profile pictures/pic (2).jpg",
         "userStatus": "Chasing dreams and making memories!",
-        "namesOfUsersWhoLikedThePost": ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"]
+        "namesOfUsersWhoLikedThePost": ["Eclipse", "Stardust", "Nova", "Whisper", "Luna"],
+        "postAgeInHours": Math.floor(Math.random() * 24) + 1
     },
     {
         "userName": "Tom und Anna",
         "comments": ["Fantastic!", "Incredible work!", "You never disappoint!"],
+        "namesOfUsersWhoCommented": ["Sunshine", "Breeze", "NatureLover"],
         "likes": 8,
         "postImage": "img/posts/post (3).jpg",
         "profilePicture": "img/people profile pictures/pic (3).jpg",
         "userStatus": "Embracing the beauty of nature!",
-        "namesOfUsersWhoLikedThePost": ["Sunshine", "Breeze", "NatureLover", "Adventurer", "Wanderlust"]
+        "namesOfUsersWhoLikedThePost": ["Sunshine", "Breeze", "NatureLover", "Adventurer", "Wanderlust"],
+        "postAgeInHours": Math.floor(Math.random() * 24) + 1
     },
     {
         "userName": "Birgit",
         "comments": ["This is stunning!", "Absolutely love it!", "You're a talent!"],
+        "namesOfUsersWhoCommented": ["InspireMe", "Dreamer", "Explorer"],
         "likes": 3,
         "postImage": "img/posts/post (4).jpg",
         "profilePicture": "img/people profile pictures/pic (4).jpg",
         "userStatus": "Exploring new horizons!",
-        "namesOfUsersWhoLikedThePost": ["InspireMe", "Dreamer", "Explorer"]
+        "namesOfUsersWhoLikedThePost": ["InspireMe", "Dreamer", "Explorer"],
+        "postAgeInHours": Math.floor(Math.random() * 24) + 1
     }
 ];
+
 
 
 

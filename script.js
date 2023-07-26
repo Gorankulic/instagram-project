@@ -1,9 +1,9 @@
 usersData = [{
         "userName": "Goran",
         "comments": [
-            { "text": "Great photo!", "commentedBy": "Alex123", "commenterImage": "img/people who commented/image (1).jpg" },
-            { "text": "Love it!", "commentedBy": "Lily22", "commenterImage": "img/people who commented/image (2).jpg" },
-            { "text": "So beautiful!", "commentedBy": "MaxPower", "commenterImage": "img/people who commented/image (3).jpg" }
+            { "text": "Great photo!", "commentedBy": "Alex123", "commentAge": 5, "commenterImage": "img/people who commented/image (1).jpg" },
+            { "text": "Love it!", "commentedBy": "Lily22", "commentAge": 2, "commenterImage": "img/people who commented/image (2).jpg" },
+            { "text": "So beautiful!", "commentedBy": "MaxPower", "commentAge": 1, "commenterImage": "img/people who commented/image (3).jpg" }
         ],
         "likes": 10,
         "postImage": "img/posts/post (1).jpg",
@@ -15,9 +15,9 @@ usersData = [{
     {
         "userName": "Rob",
         "comments": [
-            { "text": "Amazing!", "commentedBy": "Stardust", "commenterImage": "img/people who commented/image (4).jpg" },
-            { "text": "Awesome shot!", "commentedBy": "Nova", "commenterImage": "img/people who commented/image (5).jpg" },
-            { "text": "You're killing it!", "commentedBy": "Whisper", "commenterImage": "img/people who commented/image (6).jpg" }
+            { "text": "Amazing!", "commentedBy": "Stardust", "commentAge": 4, "commenterImage": "img/people who commented/image (4).jpg" },
+            { "text": "Awesome shot!", "commentedBy": "Nova", "commentAge": 3, "commenterImage": "img/people who commented/image (5).jpg" },
+            { "text": "You're killing it!", "commentedBy": "Whisper", "commentAge": 2, "commenterImage": "img/people who commented/image (6).jpg" }
         ],
         "likes": 5,
         "postImage": "img/posts/post (2).jpg",
@@ -29,9 +29,9 @@ usersData = [{
     {
         "userName": "Tom und Anna",
         "comments": [
-            { "text": "Fantastic!", "commentedBy": "Sunshine", "commenterImage": "img/people who commented/image (7).jpg" },
-            { "text": "Incredible work!", "commentedBy": "Breeze", "commenterImage": "img/people who commented/image (8).jpg" },
-            { "text": "You never disappoint!", "commentedBy": "NatureLover", "commenterImage": "img/people who commented/image (9).jpg" }
+            { "text": "Fantastic!", "commentedBy": "Sunshine", "commentAge": 6, "commenterImage": "img/people who commented/image (7).jpg" },
+            { "text": "Incredible work!", "commentedBy": "Breeze", "commentAge": 4, "commenterImage": "img/people who commented/image (8).jpg" },
+            { "text": "You never disappoint!", "commentedBy": "NatureLover", "commentAge": 2, "commenterImage": "img/people who commented/image (9).jpg" }
         ],
         "likes": 8,
         "postImage": "img/posts/post (3).jpg",
@@ -43,9 +43,9 @@ usersData = [{
     {
         "userName": "Birgit",
         "comments": [
-            { "text": "This is stunning!", "commentedBy": "InspireMe", "commenterImage": "img/people who commented/image (10).jpg" },
-            { "text": "Absolutely love it!", "commentedBy": "Dreamer", "commenterImage": "img/people who commented/image (11).jpg" },
-            { "text": "You're a talent!", "commentedBy": "Explorer", "commenterImage": "img/people who commented/image (12).jpg" }
+            { "text": "This is stunning!", "commentedBy": "InspireMe", "commentAge": 8, "commenterImage": "img/people who commented/image (10).jpg" },
+            { "text": "Absolutely love it!", "commentedBy": "Dreamer", "commentAge": 6, "commenterImage": "img/people who commented/image (11).jpg" },
+            { "text": "You're a talent!", "commentedBy": "Explorer", "commentAge": 4, "commenterImage": "img/people who commented/image (12).jpg" }
         ],
         "likes": 3,
         "postImage": "img/posts/post (4).jpg",
@@ -55,6 +55,7 @@ usersData = [{
         "hoursOld": 24
     }
 ]
+
 
 
 
@@ -87,7 +88,7 @@ function populatePageWithData() {
         // Post-container-with-additional-buttons-and-comments
         let postContainerDiv = `
         <div class="picture-container">
-          <img onclick="show(${i})" src="${user.postImage}" alt="${user.userName}'s Post">
+          <img class="pointer-finger" onclick="show(${i})" src="${user.postImage}" alt="${user.userName}'s Post">
         </div>
       `;
 
@@ -133,7 +134,7 @@ function populatePageWithData() {
       // View all comments
       let viewAllCommentsDiv = `
         <div>
-          <p>View all comments</p>
+          <p class="pointer-finger" onclick="show(${i})">View all comments</p>
         </div>
       `;
   
@@ -211,14 +212,13 @@ function show(i) {
   // Retrieve user status
   let userStatus = matchingUser.userStatus;
 
-  // Set the comments in the comment section
   let commentSection = document.getElementById("commentSection");
   commentSection.innerHTML = `
-      <span id="closeButton" class="close-button"><b onclick="closeDialog()" class="close-x-button">X</b></span>
+  <img onclick="closeDialog()" id="closeButton" class="close-button pointer-finger" src="img/icons/close button.png" alt="close button">
 
       <div class="picture-and-text-post-of-the-user">
-          <img id="peopleSmallPicture" class="people-small-profile-images" src="${matchingUser.profilePicture}" alt="User profile picture">
-          <b id="userNameInPreviewMode">${userName}</b>
+          <img id="peopleSmallPicture" class="people-small-profile-images pointer-finger" src="${matchingUser.profilePicture}" alt="User profile picture">
+          <b id="userNameInPreviewMode" class="pointer-finger">${userName}</b>
           <span id="userPostInPreviewMode" class="user-post">${userStatus}</span>
           <img id="heartImageInPreviewMode" class="heart-image-white" src="img/icons/herz.png" alt="">
       </div>
@@ -226,18 +226,23 @@ function show(i) {
       <div class="reply-to-user-text">
           <span class="reply-text">${matchingUser.hoursOld}h</span>
           <span class="reply-text">${matchingUser.likes} likes</span>
-          <span class="reply-text">Reply</span>
+          <span class="reply-text reply-tiny-text">Reply</span>
       </div>
 
       <div id="commentList" class="user-comments">
           ${matchingComments.map((comment) => `
           <div class="user-picture-and-comment">
 
-          <img class="people-small-profile-images" src="${comment.commenterImage}" alt="Commenter Picture">
-          <b>${comment.commentedBy}</b>:<span>${comment.text}</span>
+          <img class="people-small-profile-images pointer-finger" src="${comment.commenterImage}" alt="Commenter Picture">
+          <b class="pointer-finger">${comment.commentedBy}</b>:<span>${comment.text}</span>
           <img id="heartImageInPreviewMode" class="heart-image-white" src="img/icons/herz.png" alt="">
 
           </div>
+          <div class="tiny-text-under-the-comment">
+          <span>${comment.commentAge}h</span>
+          <span class="reply-tiny-text">Reply</span>
+          </div>
+         
           
              
           `).join("")}

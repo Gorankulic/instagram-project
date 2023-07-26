@@ -1,6 +1,5 @@
                     body {
                         display: flex;
-                        margin-left: 200px;
                         margin-top: 50px;
                         background-color: rgba(rgba(193, 193, 193, 0.413));
                     }
@@ -10,22 +9,6 @@
                         width: 65%;
                     }
                     
-                    .post-image-comments {
-                        display: flex;
-                        margin-left: 20%;
-                        background-color: rgba(0, 0, 0, 0.7);
-                        z-index: 999;
-                        position: fixed;
-                        left: 0;
-                        right: 0;
-                        bottom: 0;
-                        top: 0;
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin: 0;
-                    }
-                    
                     .replay-text {
                         margin-right: 10px;
                     }
@@ -33,13 +16,7 @@
                     .picture-and-text-post-of-the-user {
                         display: flex;
                         align-items: center;
-                    }
-                    
-                    .close-button {
-                        display: flex;
-                        flex-flow: row-reverse;
-                        margin-right: 20px;
-                        margin-top: 20px;
+                        padding: 10px;
                     }
                     
                     .close-x-button:hover {

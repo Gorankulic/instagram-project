@@ -268,11 +268,15 @@ body {
 
 .placeholder-input {
     border-radius: 20px;
-    border-width: 1px;
+    border-width: 0px;
     opacity: 0.7;
     height: 20px;
     margin: 5px;
     width: 100%;
+}
+
+.placeholder-input:focus {
+    outline: none;
 }
 
 @media (max-width: 768px) {

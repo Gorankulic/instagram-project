@@ -192,6 +192,7 @@ function closeDialog() {
 
 
 function show(i) {
+  let user = usersData[i];
   // Display the full-screen post
   let postsInFullScreen = document.getElementById("postsInFullScreen");
   postsInFullScreen.classList.remove("d-none");
@@ -247,6 +248,39 @@ function show(i) {
              
           `).join("")}
       </div>
+      <div class="icons-and-number-of-likes">
+        
+      
+      <div class="buttons-container-in-full-screen">
+      <div class="icons-container">
+        <img src="img/icons/herz.png" alt="Like Button">
+        <img src="img/icons/comment icon.png" alt="Comment Section">
+        <img
+          src="img/icons/arrow.png"
+          class="arrow-button"
+          alt="Arrow Button"
+        >
+      </div>
+      <div class="favorite-container">
+        <img src="img/icons/favorite icon blank.png" alt="Favorite Icon">
+      </div>
+    </div>
+    <div class="likes-in-full-screen">
+    Liked by <b>${user.namesOfUsersWhoLikedThePost.slice(0, 3).join(", ")}</b>
+    ${user.namesOfUsersWhoLikedThePost.length > 3 ? " and" : ""}
+    ${
+      user.namesOfUsersWhoLikedThePost.length > 3
+        ? `<b>${user.namesOfUsersWhoLikedThePost.length - 3} others</b>`
+        : ""
+    }
+    <br>
+    <span class="reply-text">${matchingUser.hoursOld} HOURS AGO</span>
+  </div>
+  <div class="add-comment-and-smile-icon">
+  <img src="img/icons/smile icon.png" class="smile-icon" alt="smile icon"><input class="placeholder-input" id="placeholderForComments" placeholder="add a comment" type="text"> <button class="add-a-comment-button" type="">Post</button>
+  </div>
+  
+  </div>
   `;
 }
 
